@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Type d'alerte</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css">
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+</head>
+<body>
+<span id="info" style="font-size:.8em;position: fixed;top:100px;right:20px;border:darkgreen solid 2px;color:#000000;border-radius:4px;padding:4px; width: 300px;display: none"></span>
+<span id="err" style="position: fixed;top:100px;right:20px;border:darkred solid 2px; border-radius:4px;padding:4px; width: 300px;display: none"></span>
+
+<div id="container">
+
+    <form id="form_alerte">
+        <input type="hidden" id="alrt_id" name="alrt_id" value=""/>
+        <table>
+            <caption style="text-align: left;text-decoration: underline;font-size: 1.4em;padding-bottom:6px">Type d'alerte et notification</caption>
+            <tr>
+                <td></td>
+                <td>Liste des types d'alertes et notifications<br>
+                    <select name="liste_types_alertes_notifications" id="liste_types_alertes_notifications">
+                        <option>-----------</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td></td>
+                </tr>
+            <tr>
+                <td>Libélle </td>
+                <td><input type="text" name="typealerte" id="typealerte"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Associé à</td>
+                <td>
+                    <select name="associe" id="associe">
+                        <option></option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Personne</td>
+                <td>
+                    <input type="radio" value="1" id="personne_oui" name="personne_radio" checked>Oui
+                    <input type="radio" value="0" id="personne_non" name="personne_radio">Non
+                    <span style="margin-left: 60px"></span>
+                    Groupe personne
+                    <input type="radio" value="1" id="groupe_oui" name="groupe_radio" >Oui
+                    <input type="radio" value="0" id="groupe_non" name="groupe_radio" checked>Non
+                </td>
+                <td></td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Niveau Alerte</td>
+                <td>
+                    <input type="radio" value="Alerte" id="Alerte" name="niveaualerte" checked>Alerte
+                    <input type="radio" value="Notification" id="Notification" name="niveaualerte">Notification
+                </td>
+
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Type envoi</td>
+                <td id="typeenvoi">
+                    <input type="checkbox" value="E-mail" id="Email" name="typeenvoi[]" checked>E-mail
+                    <input type="checkbox" value="SMS" id="SMS" name="typeenvoi[]" checked>SMS
+                    <input type="checkbox" value="Flux" id="Flux" name="typeenvoi[]" checked>Flux
+                    <input type="checkbox" value="Tableau de bord" id="Tableaudebord" name="typeenvoi[]" checked>Tableau de bord
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Jour de la semaine</td>
+                <td>
+                    <input type="radio" value="oui" id="jrse_oui" name="jrse" checked>Oui
+                    <input type="radio" value="non" id="jrse_non" name="jrse">Non
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="joursemaine">
+                    <input type="checkbox" value="Lun" id="Lun" name="joursemaine[]" checked>Lun
+                    <input type="checkbox" value="Mar" id="Mar" name="joursemaine[]" checked>Mar
+                    <input type="checkbox" value="Mer" id="Mer" name="joursemaine[]" checked>Mer
+                    <input type="checkbox" value="Jeu" id="jeu" name="joursemaine[]" checked>Jeu
+                    <input type="checkbox" value="Ven" id="Ven" name="joursemaine[]" checked>Ven
+                    <input type="checkbox" value="Sam" id="Sam" name="joursemaine[]" checked>Sam
+                    <input type="checkbox" value="Dim" id="Dim" name="joursemaine[]" checked>Dim
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Tranche Horaire</td>
+                <td>
+                    <input type="radio" value="oui" id="trhr_oui" name="trhr" checked>Oui
+                    <input type="radio" value="non" id="trhr_non" name="trhr">Non
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="trhr1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Matin<br/>
+                    De <input type="text" name="matin_t1" id="matin_t1" class="input-width" value="00:00">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    A <input type="text" name="matin_t2" id="matin_t2" class="input-width" value="12:59">
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="trhr2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Après midi<br/>
+                    De <input type="text" name="soir_t1" id="soir_t1" class="input-width" value="13:00">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    A <input type="text" name="soir_t2" id="soir_t2" class="input-width" value="23:59">
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Valeur Minimum</td>
+                
+                <td >
+                    <input type="radio" value="oui" id="valmin_oui" name="valmin">Oui
+                    <input type="radio" value="non" id="valmin_non" name="valmin" checked>Non
+                    <span style="margin-left: 40px">Tolérance Valeur Minimum</span>
+                    <input type="radio" value="oui" id="tolervalmin_oui" name="tolervalmin">Oui
+                    <input type="radio" value="non" id="tolervalmin_non" name="tolervalmin" checked>Non
+                </td>
+                <td ></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span style="margin-left: 10px"></span>
+                    <input type="text" name="valeurminimum" id="valeurminimum" class="input-width" disabled>
+                    <span style="margin-left: 250px"></span>
+                    <input type="text" name="tolervaleurminimum" id="tolervaleurminimum" class="input-width" disabled>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Valeur Maximum</td>
+                <td>
+                    <input type="radio" value="oui" id="valmax_oui" name="valmax">Oui
+                    <input type="radio" value="non" id="valmax_non" name="valmax" checked>Non
+                    <span style="margin-left: 40px">Tolérance Valeur Maximum</span>
+                    <input type="radio" value="oui" id="tolervalmax_oui" name="tolervalmax">Oui
+                    <input type="radio" value="non" id="tolervalmax_non" name="tolervalmax" checked>Non
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><span style="margin-left: 10px"></span>
+                    <input type="text" name="valeurmaximum" id="valeurmaximum" class="input-width" disabled>
+                    <span style="margin-left: 250px"></span>
+                    <input type="text" name="tolervaleurmaximum" id="tolervaleurmaximum" class="input-width" disabled>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Fréquence Rappel</td>
+                <td>
+                    <input type="radio" value="oui" id="frappel_oui" name="frappel" checked>Oui
+                    <input type="radio" value="non" id="frappel_non" name="frappel">Non
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="frequencerappel">
+                    <input type="checkbox" value="Immédiate" id="immediate" name="frequencerappel[]" checked>Immédiate
+                    <input type="checkbox" value="Par Jour" id="parjour" name="frequencerappel[]" checked>Par Jour
+                    <input type="checkbox" value="Par Mois" id="parmois" name="frequencerappel[]" checked>Par Mois
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td >
+                    <button type="submit" id="enregistrer_alerte" style="display: inline">Enregistrer</button>
+                    <button type="submit" id="update_alerte" style="display: none">Update</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

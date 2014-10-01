@@ -1,0 +1,23 @@
+body,select,input,{
+	margin: 0;
+	padding: 0;
+}
+#container, table{
+	width: 80%;
+	margin: 10px auto;	
+}
+
+input[type=text],select{
+	padding: 8px;
+	width: 300px;
+	margin-bottom: 4px;
+}
+
+
+.input-width{
+	width: 48px !important;
+}
+
+td{
+	height: 30px;
+}
